@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<ComputerStore.Web.ViewModels.Components.CatalogVm>
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="product_grid">
+                    @foreach (var catalogItem in Model)
+                    {
+                        <!-- Product -->
+                        <div class="product">
+                            <div class="product_image"><a href="/PcPartDetail/@catalogItem.Id" class="page-link"><img src="@Configuration.GetSection("Data")["ApiBaseUri"]pcparts/ImageByName/@catalogItem.ImageNames.FirstOrDefault()" alt=""></a></div>
+                            @if (catalogItem.Hot)
+                            {
+                                <!-- add the new text to the product that aren't older then 5 days -->
+                                <div class="product_extra product_new"><a href="#">New</a></div>
+
+                            }
+                            <div class="product_content">
+                                <div class="product_title"><a href="#">@catalogItem.Name</a></div>
+                                <div class="product_price">€@catalogItem.Price </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

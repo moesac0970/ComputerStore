@@ -1,0 +1,121 @@
+﻿@page
+@model ComputerStore.Web.Pages.PcBuildsModel
+@{
+    ViewData["Title"] = "PcBuilds";
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+}
+@section Scripts {
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/parallax-js-master/parallax.min.js"></script>
+    <script src="~/lib/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+
+}
+
+<!-- Ads -->
+
+<div class="home_slider_container avds">
+    <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
+        <div class="avds_small">
+            <div class="avds_background" style="background-image:url(images/gigabyte_x570.jpg)"></div>
+            <div class="avds_small_inner">
+                <div class="avds_small_content">
+                    <div class="avds_title">Server pc for the whole family</div>
+                    <div class="avds_link"><a href="categories.html">See More</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="avds_large">
+            <div class="avds_background" style="background-image:url(images/home_slider_3.jpg)"></div>
+            <div class="avds_large_container">
+                <div class="avds_large_content">
+                    <div class="avds_title">Professional use, in a work environment</div>
+                    <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viver ra velit venenatis fermentum luctus.</div>
+                    <div class="avds_link avds_link_large"><a href="categories.html">See More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Icon Boxes -->
+
+<div class="icon_boxes">
+    <div class="container">
+        <div class="row icon_box_row">
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
+                    <div class="icon_box_title">Free Shipping Worldwide</div>
+                    <div class="icon_box_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
+                    <div class="icon_box_title">Free Returns</div>
+                    <div class="icon_box_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
+                    <div class="icon_box_title">24h Fast Support</div>
+                    <div class="icon_box_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="newsletter_border"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="newsletter_content text-center">
+                    <div class="newsletter_title">Lets discuss your new server pc</div>
+                    <div class="newsletter_text"><p>If You want it for the family or for the office, light or heavy workloads? Fill in the form</p></div>
+                    <div class="newsletter_form_container">
+                        <form action="#" id="newsletter_form" class="newsletter_form">
+                            <label>Email</label>
+                            <input type="email" class="newsletter_input" required="required">
+                            <label>Name</label>
+                            <input type="text" class="newsletter_input" required="required">
+                            <label>Description</label>
+                            <input type="text" class="newsletter_input" required="required">
+                            <button class="newsletter_button trans_200"><span>sent</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@page
+@model ComputerStore.Web.Areas.Identity.Pages.Forum.IndexModel
+@{
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+    <link href="~/styles/Chat.css" rel="stylesheet" type="text/css" />
+}
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/Chat.js"></script>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/parallax-js-master/parallax.min.js"></script>
+    <script src="~/lib/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="products pt-5 mt-5">
+    <div class="pt-5 text-center">
+        <h2>Forum chat</h2>
+    </div>
+    <div class="container pt-5"  style="overflow-y: scroll; height:600px; width: auto;">
+        @if (Model.PcBuildChatVm.Messages.Count != 0)
+        {
+            <div id="messageList">
+                @foreach (var message in Model.PcBuildChatVm.Messages.OrderBy(m => m.CreationDate))
+                {
+                    <div class="msg">
+                        <div class="bubble">
+                            <div class="txt">
+                                <span class="name">@message.UserName</span>
+                                <span class="message">
+                                    @message.Text
+                                </span>
+
+                            </div>
+                            <div class="bubble-arrow"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="messageList">
+
+            </div>
+        }
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <input type="text" id="txtUserName" class="form-control" value="@Model.PcBuildChatVm.UserId" hidden>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="">
+            <div class="col-2">Message</div>
+            <input type="text" id="txtMessage" class="form-control" />
+        </div>
+
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-6">
+                <input type="button" id="btnSend" value="Send Message" />
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,110 @@
+﻿@page "{currentpage:int?}"
+@model ComputerStore.Web.Pages.PcPartsModel
+@using Microsoft.Extensions.Configuration
+@using ComputerStore.Web.Helper;
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "PcParts";
+}
+
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/categories.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/categories_responsive.css">
+}
+@section Scripts {
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/parallax-js-master/parallax.min.js"></script>
+    <script src="~/lib/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/js/site.js"></script>
+
+
+}
+<!-- Home -->
+@if (Model.CurrentPage == 1)
+{
+    <div class="home">
+        <div class="home_container">
+            <div class="home_background" style="background-image:url(images/categories.jpg)"></div>
+            <div class="home_content_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="home_content">
+                                <div class="home_title">PC Parts<span>.</span></div>
+                                <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!-- Product Sorting -->
+                <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+                    <div class="results">Showing <span>12</span> results</div>
+                    <div class="sorting_container ml-md-auto">
+                        <div class="sorting">
+                            <ul class="item_sorting">
+                                <li>
+                                    <span class="sorting_text">Sort by</span>
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    <ul>
+                                        <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
+                                        <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
+                                        <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <div class="product_grid">
+                    @foreach (var catalogItem in Model.Data)
+                    {
+                        <!-- Product -->
+                        <div class=" product">
+                            <div class="product_image"><a href="/PcPartDetail/@catalogItem.Id"  class="page-link"><img src="@Configuration.GetSection("Data")["ApiBaseUri"]pcparts/ImageByName/@catalogItem.ImageNames.FirstOrDefault()" alt=""></a></div>
+                            @if (catalogItem.Hot)
+                            {
+                                <!-- add the new text to the product that aren't older then 5 days -->
+                                <div class="product_extra product_new"><a href="#">New</a></div>
+
+                            }
+                            <div class="product_content">
+                                <div class="product_title"><a href="#">@catalogItem.Name</a></div>
+                                <div class="product_price">€@catalogItem.Price </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+                <div>
+                    <ul class="pagination">
+                        @for (var i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a asp-page="/pcparts" asp-route-currentpage="@i" class="page-link">@i</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

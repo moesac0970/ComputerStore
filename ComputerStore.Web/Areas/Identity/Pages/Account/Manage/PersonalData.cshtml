@@ -1,0 +1,42 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+}
+@section Scripts {
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/parallax-js-master/parallax.min.js"></script>
+    <script src="~/lib/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+}
+<div class="products">
+    <div class="container pt-5">
+        <h4>@ViewData["Title"]</h4>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+                <p>
+                    <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+                </p>
+                <form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group">
+                    <button class="btn btn-primary" type="submit">Download</button>
+                </form>
+                <p>
+                    <a id="delete" asp-page="DeletePersonalData" class="btn btn-primary">Delete</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
